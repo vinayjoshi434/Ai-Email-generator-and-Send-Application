@@ -17,9 +17,12 @@ function App() {
     console.log("handlegenerate hit");
 
     try {
-      const res = await axios.post("http://localhost:5000/api/generateemail", {
-        prompt,
-      });
+      const res = await axios.post(
+        "https://instantemail.onrender.com/api/generateemail",
+        {
+          prompt,
+        }
+      );
 
       console.log(res);
 
@@ -34,11 +37,14 @@ function App() {
   const handlesend = async () => {
     console.log("handlesend hit");
     try {
-      const send = await axios.post("http://localhost:5000/api/send", {
-        to,
-        subject,
-        body: generatedEmail,
-      });
+      const send = await axios.post(
+        "https://instantemail.onrender.com/api/send",
+        {
+          to,
+          subject,
+          body: generatedEmail,
+        }
+      );
       toast.success("Email sent!");
       setGeneratedEmail("");
       setSubject("");
